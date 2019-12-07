@@ -20,28 +20,6 @@ void * Read_Args(void * args)
     char readLine[Buffer + 1];
 
     number = read(sock, readLine, Buffer);
-    if ( strcmp(readLine, "clash") == 0)
-    {
-        printf("A Client already exists with the mentioned name\n");
-        exit(1);
-    }
-    else if ( strcmp(readLine, "accept") != 0 )
-    {
-        printf("Error in connecting\n");
-        exit(1);
-    }
-    else if ( number < 0 )
-    {
-        perror("read ");
-        exit(1);
-    }
-    else
-    {
-        printf("Connection Successful.\n");
-        printf("Available commands are /quit /list /msg clientname message\n");
-    }
-
-
     while( (number = read(sock, readLine, Buffer)) > 0)
     {
         readLine[number] = '\n';
